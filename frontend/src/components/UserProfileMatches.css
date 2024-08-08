@@ -1,0 +1,58 @@
+/* UserProfileMatches.css */
+.matches-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .matches-container h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
+  .matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .match-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .match-header {
+    background: #004080; /* Navy Blue */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .match-body {
+    padding: 15px;
+  }
+  
+  .match-body p {
+    margin: 10px 0;
+  }
+  
+  .match-footer {
+    background: #f4f4f4;
+    padding: 15px;
+    text-align: center;
+  }
+  
