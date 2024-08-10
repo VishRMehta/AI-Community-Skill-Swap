@@ -60,12 +60,15 @@ body {
 }
 
 .profile-card {
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   justify-content: space-between;
   height: 100%;
+  /* Added to ensure footer sticks to the bottom */
 }
 
 .profile-card:hover {
@@ -76,6 +79,9 @@ body {
 .profile-link {
   text-decoration: none; /* Remove underline */
   color: inherit; /* Ensure link inherits the color of the text */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .profile-header {
@@ -89,6 +95,7 @@ body {
 
 .profile-body {
   padding: 15px;
+  flex: 1; /* Ensures body takes up remaining space */
 }
 
 .profile-body p {
@@ -102,7 +109,6 @@ body {
   text-align: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  padding-bottom: auto;
 }
 
 .error {
