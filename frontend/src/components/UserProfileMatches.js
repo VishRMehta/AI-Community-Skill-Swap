@@ -7,6 +7,7 @@ function UserProfileMatches() {
   const [matches, setMatches] = useState([]);
   const [userProfile, setUserProfile] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
   const { id } = useParams(); // This is the username
 
   // Fetch user ID and profile from username
@@ -24,6 +25,7 @@ function UserProfileMatches() {
 
   useEffect(() => {
     const fetchMatches = async () => {
+      setLoading(true); // Start loading
       try {
         const userProfile = await fetchUserProfile(id);
         if (userProfile) {
@@ -37,6 +39,8 @@ function UserProfileMatches() {
       } catch (error) {
         setError('Error fetching matches');
         console.error('Error fetching matches:', error);
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -48,36 +52,44 @@ function UserProfileMatches() {
       <h1>Matches for {id}</h1>
       {error && <p className="error">{error}</p>}
       
-      {userProfile && (
-        <div className="user-profile-card">
-          <h2>Your Requirements</h2>
-          <p><strong>Skills you can offer them:</strong> {userProfile.skills_offered.map(skill => skill.name).join(', ')}</p>
-          <p><strong>Skills you are looking for:</strong> {userProfile.skills_sought.map(skill => skill.name).join(', ')}</p>
+      {loading ? (
+        <div className="loading-spinner">
+          <div className="spinner"></div> {/* Display loading animation */}
         </div>
-      )}
-
-      <h2>Your Matches</h2>
-      <div className="matches-grid">
-        {matches.length > 0 ? (
-          matches.map(profile => (
-            <div className="match-card" key={profile.user}>
-              <div className="match-header">
-                <h2>{profile.user}</h2>
-              </div>
-              <div className="match-body">
-                <p><strong>Location:</strong> {profile.location}</p>
-                <p><strong>Bio:</strong> {profile.bio}</p>
-              </div>
-              <div className="match-footer">
-                <p><strong>Skills Offered:</strong> {profile.skills_offered.map(skill => skill.name).join(', ')}</p>
-                <p><strong>Skills Sought:</strong> {profile.skills_sought.map(skill => skill.name).join(', ')}</p>
-              </div>
+      ) : (
+        <>
+          {userProfile && (
+            <div className="user-profile-card">
+              <h2>Your Requirements</h2>
+              <p><strong>Skills you can offer them:</strong> {userProfile.skills_offered.map(skill => skill.name).join(', ')}</p>
+              <p><strong>Skills you are looking for:</strong> {userProfile.skills_sought.map(skill => skill.name).join(', ')}</p>
             </div>
-          ))
-        ) : (
-          <p>No matches found</p>
-        )}
-      </div>
+          )}
+
+          <h2>Your Matches</h2>
+          <div className="matches-grid">
+            {matches.length > 0 ? (
+              matches.map(profile => (
+                <div className="match-card" key={profile.user}>
+                  <div className="match-header">
+                    <h2>{profile.user}</h2>
+                  </div>
+                  <div className="match-body">
+                    <p><strong>Location:</strong> {profile.location}</p>
+                    <p><strong>Bio:</strong> {profile.bio}</p>
+                  </div>
+                  <div className="match-footer">
+                    <p><strong>Skills Offered:</strong> {profile.skills_offered.map(skill => skill.name).join(', ')}</p>
+                    <p><strong>Skills Sought:</strong> {profile.skills_sought.map(skill => skill.name).join(', ')}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No matches found</p>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

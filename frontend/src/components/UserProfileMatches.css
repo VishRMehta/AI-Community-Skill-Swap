@@ -55,4 +55,28 @@
     padding: 15px;
     text-align: center;
   }
-  
+  /* UserProfileMatches.css */
+
+/* Spinner Container */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust height as needed */
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light gray border */
+  border-left: 4px solid #3498db; /* Blue border */
+  border-radius: 50%;
+  width: 40px; /* Size of the spinner */
+  height: 40px; /* Size of the spinner */
+  animation: spin 1s linear infinite;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -24,6 +24,7 @@ body {
 
 .brand-logo img {
   width: 150px;
+  height: 100px
 }
 
 .main-nav ul {
@@ -101,6 +102,7 @@ body {
   text-align: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  padding-bottom: auto;
 }
 
 .error {
@@ -114,4 +116,22 @@ body {
   text-align: center;
   padding: 10px 20px;
   margin-top: auto;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #0073e6;
+  box-shadow: 0 0 8px rgba(0, 115, 230, 0.2);
 }
