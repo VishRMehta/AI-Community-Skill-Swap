@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './About.css'; // Import the CSS file for styling
+import logo from './Logo.png'; // Import the logo image
 
 function About() {
   return (
     <div className="about-container">
       <header className="site-header">
         <div className="brand-logo">
-          <img src="/Users/vishvamehta/Desktop/skill_swap_platform/frontend/src/components/Logo.png" alt="SkillLink Logo" />
+          <img src={logo} alt="SkillLink Logo" />
         </div>
         <nav className="main-nav">
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            <li><a href="/register">Register</a></li>
           </ul>
         </nav>
       </header>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './UserProfileList.css'; // Import the CSS file for styling
+import logo from './Logo.png'; // Import the logo image
 
 function UserProfileList() {
   const [profiles, setProfiles] = useState([]);
@@ -34,13 +35,14 @@ function UserProfileList() {
     <div className="profile-container">
       <header className="site-header">
         <div className="brand-logo">
-          <img src="frontend/src/components/Logo.png" alt="SkillLink Logo" />
+          <img src={logo} alt="SkillLink Logo" />
         </div>
         <nav className="main-nav">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/register">Register</a></li>
           </ul>
         </nav>
       </header>

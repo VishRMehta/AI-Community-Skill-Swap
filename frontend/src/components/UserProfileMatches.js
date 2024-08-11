@@ -15,6 +15,7 @@ function UserProfileMatches() {
     try {
       const response = await axios.get('http://localhost:8000/api/profiles/');
       const profiles = response.data;
+      console.log(profiles);
       const userProfile = profiles.find(profile => profile.user === username);
       return userProfile || null;
     } catch (error) {
@@ -61,11 +62,12 @@ function UserProfileMatches() {
           {userProfile && (
             <div className="user-profile-card">
               <h2>Your Requirements</h2>
+              <p><strong>Your location:</strong> {userProfile.location}</p>
               <p><strong>Skills you can offer them:</strong> {userProfile.skills_offered.map(skill => skill.name).join(', ')}</p>
               <p><strong>Skills you are looking for:</strong> {userProfile.skills_sought.map(skill => skill.name).join(', ')}</p>
             </div>
           )}
-
+          <br />
           <h2>Your Matches</h2>
           <div className="matches-grid">
             {matches.length > 0 ? (

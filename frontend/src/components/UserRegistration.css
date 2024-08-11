@@ -1,0 +1,58 @@
+/* UserRegistration.css */
+
+.registration-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registration-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .registration-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .registration-container input[type="text"],
+  .registration-container input[type="email"],
+  .registration-container input[type="password"],
+  .registration-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .registration-container textarea {
+    height: 80px;
+    resize: vertical;
+  }
+  
+  .registration-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .registration-container button:hover {
+    background-color: #005bb5;
+  }
+  
+  .registration-container p {
+    text-align: center;
+    color: green;
+    margin-top: 20px;
+  }
+  

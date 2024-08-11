@@ -70,13 +70,13 @@ def compute_similarity_matrix(df):
     geo_similarity = (geo_similarity - geo_similarity.min()) / (geo_similarity.max() - geo_similarity.min())
     
     # Adjust weighting between skills and geography
-    skill_weight = 0.4
-    geo_weight = 0.6
+    skill_weight = 1.5
+    geo_weight = 1.1
     combined_similarity = (skill_similarity * skill_weight) + (geo_similarity * geo_weight)
     
     return combined_similarity
 
-def find_best_matches(user_id, top_n=5, similarity_threshold=0.5):
+def find_best_matches(user_id, top_n=5, similarity_threshold=1.1):
     profiles_df = get_user_profiles()
 
     # Debugging: Log the profiles DataFrame
@@ -95,8 +95,8 @@ def find_best_matches(user_id, top_n=5, similarity_threshold=0.5):
     user_idx = profiles_df.index[profiles_df['user_id'] == user_id].tolist()[0]
     similarity_scores = list(enumerate(similarity_matrix[user_idx]))
     
-    # Filter out matches with similarity score <= 0.5
-    filtered_scores = [score for score in similarity_scores if score[1] > similarity_threshold]
+    # Filter out matches with similarity score <= similarity_threshold and exclude the user's own profile
+    filtered_scores = [score for score in similarity_scores if score[1] > similarity_threshold and score[0] != user_idx]
     
     # Sort by similarity score in descending order
     sorted_scores = sorted(filtered_scores, key=lambda x: x[1], reverse=True)
@@ -105,9 +105,10 @@ def find_best_matches(user_id, top_n=5, similarity_threshold=0.5):
     print(f"Similarity Scores for user_id {user_id}: {similarity_scores}")
     print(f"Filtered and sorted matches: {sorted_scores}")
 
-    best_matches = sorted_scores[1:top_n+1]  # Exclude self-matching
+    best_matches = sorted_scores[:top_n]  # Get the top N matches
 
     # Debugging: Log the best matches found
     print(f"Best matches found: {best_matches}")
 
     return [profiles_df.iloc[i[0]]['user_id'] for i in best_matches]
+

@@ -4,6 +4,7 @@ import UserProfileList from './components/UserProfileList';
 import UserProfileMatches from './components/UserProfileMatches';
 import About from './components/About';
 import Contact from './components/Contact';
+import UserRegistration from './components/UserRegistration';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/profiles/:id/matches" element={<UserProfileMatches />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<UserRegistration />} />
       </Routes>
     </Router>
   );
