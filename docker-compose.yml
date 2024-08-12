@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: skill_swap/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./skill_swap:/app
+    env_file:
+      - .env  # Ensure you have an .env file for environment variables
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app/frontend
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: skill_swap_db
+      POSTGRES_USER: yourusername
+      POSTGRES_PASSWORD: yourpassword
+
+volumes:
+  postgres_data:
