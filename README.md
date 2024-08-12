@@ -2,6 +2,9 @@
 
 SkillSwap is an innovative web application that facilitates skill exchange and collaborative learning. It connects individuals who are eager to learn from experts in specific fields with those who possess expertise in those areas. The core of SkillSwap’s value lies in its ability to offer valuable learning opportunities for free, in exchange for sharing your own knowledge and skills.
 
+![SS1](https://github.com/VishRMehta/AI-Community-Skill-Swap/blob/master/Screenshot%202024-08-12%20at%2002.10.50.png)
+![SS2](https://github.com/VishRMehta/AI-Community-Skill-Swap/blob/master/Screenshot%202024-08-12%20at%2002.11.14.png)
+
 ## Key Features
 
 **Expert-Learner Matching**: Uses advanced AI techniques to match users based on skill compatibility and geographical proximity, ensuring meaningful and effective connections.
@@ -12,9 +15,9 @@ SkillSwap is an innovative web application that facilitates skill exchange and c
 
 ## How It Works:
 
-For Learners: Gain free access to expert knowledge in areas of interest by offering your own skills in return. Whether you want to learn a new programming language, improve your design skills, or explore any other field, SkillSwap connects you with the right experts.
+**For Learners**: Gain free access to expert knowledge in areas of interest by offering your own skills in return. Whether you want to learn a new programming language, improve your design skills, or explore any other field, SkillSwap connects you with the right experts.
 
-For Experts: Share your expertise with eager learners and gain insights from them. It’s a great way to give back, stay updated with industry trends, and network with like-minded professionals.
+**For Experts**: Share your expertise with eager learners and gain insights from them. It’s a great way to give back, stay updated with industry trends, and network with like-minded professionals.
 
 
 SkillSwap is designed to empower both learners and experts, fostering a community of knowledge sharing and personal growth. It’s more than just a platform—it’s a gateway to professional development and skill enhancement, driven by a culture of mutual benefit and collaboration.
@@ -63,3 +66,19 @@ SkillSwap is designed to empower both learners and experts, fostering a communit
    pip install -r requirements.txt
    python manage.py migrate
    python manage.py runserver
+   ```
+3. **Deployment on Docker**
+   ```bash
+   docker-compose up --build
+   ```
+   The frontend will be available at http://localhost:3000
+   The backend will be available at http://localhost:8000
+   
+5. **Deployment on AWS**
+   ```bash
+   npm run build (in frontend folder)
+   eb init
+   eb deploy
+   eb status
+   eb logs
+   ```
